@@ -15,7 +15,7 @@ export default function fibRoute(req: Req, res: Res): void {
 
   const n = parseInt(numParam, 10);  // turn into base10 int
   if (Number.isNaN(n)) {
-    res.status(402).send(Invalid number: "${numParam}");
+    res.status(402).send(`Invalid number: "${numParam}"`);
     return;
   }
 
@@ -23,9 +23,9 @@ export default function fibRoute(req: Req, res: Res): void {
   let result = "";
   // serialize
   if (retVal < 0) {
-    result = fibonacci(${n}) is undefined;
+    result = `fibonacci(${n}) is undefined`;
   } else {
-    result = fibonacci(${n}) is ${retVal}; 
+    result = `fibonacci(${n}) is ${retVal}`; 
   }
   res.send(result);
 }
