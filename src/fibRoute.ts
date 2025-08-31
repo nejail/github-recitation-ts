@@ -8,24 +8,24 @@ type Res = { status: (code: number) => Res; send: (msg: string) => void };
 
 export default function fibRoute(req: Req, res: Res): void {
   const numParam = req.params.num;  // no more unsafe access
-  if (!(myVar instanceof String)) {
+  if (!(typeof numParam === "string" )) {
     res.status(401).send("Missing 'num'");
-    return;
-  }              
-
-  const n = parseInt(numParam, 10);  // turn into base10 int
-  if (Number.isNaN(n)) {
-    res.status(402).send(`Invalid number: "${numParam}"`);
     return;
   }
 
-  const res = fibonacci(n);
-  var result = ``;
+  const n = parseInt(numParam, 10);  // turn into base10 int
+  if (Number.isNaN(n)) {
+    res.status(402).send(Invalid number: "${numParam}");
+    return;
+  }
+
+  const retVal = fibonacci(n);
+  let result = "";
   // serialize
-  if (res < 0) {
-    result = `fibonacci(${n}) is undefined`;
+  if (retVal < 0) {
+    result = fibonacci(${n}) is undefined;
   } else {
-    result = `fibonacci(${n}) is ${res}`; 
+    result = fibonacci(${n}) is ${retVal}; 
   }
   res.send(result);
 }
